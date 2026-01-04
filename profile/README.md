@@ -34,6 +34,14 @@ develop computational tools for knowledge inference;
 
 [LETO](https://leto.uhgia.org) (Learning Engine Through Ontologies) is an innovative platform that harnesses the power of large language models (LLMs) for knowledge discovery and data analysis. By integrating advanced LLM capabilities, LETO enables users to extract insights, identify patterns, and generate meaningful interpretations from complex datasets. This platform supports exploratory data analysis and facilitates informed decision-making through natural language interactions and automated reasoning.
 
+**LINGO: A minimal, async-native, and unopinionated toolkit for modern LLM applications**
+
+[LINGO](https://github.com/gia-uh/lingo) is a library that provides a powerful, three-layered API for building, testing, and deploying complex LLM workflows with precision and clarity. It is built on the idea that developers need different levels of abstraction for different tasks. **The High-Level Lingo API** for purely declarative, ready-to-use LLM assistants. This is the fastest way to get a chatbot running; **The Mid-Level Flow API** gor declarative, reusable context engineering workflows that allows to define complex, composable logic with branching, tool use, and subroutines; and, **The Low-Level (LLM, Engine, Context) API** for direct, explicit context engineering that gives full, imperative control over the message history and LLM interactions.
+
+**PUMKING: A library to streamline the complex process of document chunking, parsing, and representation**
+
+[PUMKING](https://github.com/gia-uh/pumpking)  is an open-source Python library designed to streamline the complex process of document chunking, parsing, and representation. It provides a flexible and powerful pipeline to transform unstructured documents into structured, queryable knowledge. Whether you're building a RAG (Retrieval-Augmented Generation) system, a document analysis tool, or a knowledge extraction service, pumpking provides the foundational blocks to get you there faster.
+
 **ARGO: A Library for Building LLM-Based Agentic Workflows**  
 
 [ARGO](https://argo.uhgia.org) (Agent-based Reasoning, Governance, and Orchestration) is a comprehensive library designed to construct agentic workflows powered by large language models. It provides tools and abstractions to develop intelligent agents capable of performing complex tasks autonomously by orchestrating LLMs in workflows. ARGO supports the creation of dynamic, context-aware agents that can interact with various data sources and services, enabling sophisticated automation and problem-solving applications.
