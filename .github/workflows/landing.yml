@@ -1,0 +1,48 @@
+# Reusable workflow: render a project's landing page from landing.yaml, add its
+# docs build under /docs/ when it has one, and deploy to GitHub Pages.
+# Usage and the landing.yaml format: landing/README.md in gia-uh/.github.
+name: landing
+
+on:
+  workflow_call:
+    inputs:
+      docs-build:
+        description: Shell command that builds the project's docs (optional).
+        type: string
+        default: ""
+      docs-dir:
+        description: Directory the docs build writes to; copied to /docs/.
+        type: string
+        default: ""
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: gia-uh/.github
+          path: .gia-landing
+      - uses: astral-sh/setup-uv@v6
+      - name: Render the landing page
+        run: uv run --no-project --with pyyaml python .gia-landing/landing/render.py landing.yaml _site
+      - name: Build the docs
+        if: inputs.docs-build != ''
+        run: ${{ inputs.docs-build }}
+      - name: Put the docs under /docs/
+        if: inputs.docs-dir != ''
+        run: mkdir -p _site/docs && cp -r "${{ inputs.docs-dir }}"/. _site/docs/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
